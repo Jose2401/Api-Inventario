@@ -1,0 +1,50 @@
+<header class="header mb-5">
+  <h2 class="text-">Productos</h2>
+  <a class="btn btn-secondary ms-3" routerLink="">Categorías</a>
+</header>
+
+<br>
+
+<div class="input-group mb-3">
+  <span class="input-group-text">ID</span>
+  <input type="number" class="form-control" placeholder="Buscar por ID" #searchInput>
+  <button class="btn btn-primary" type="button" (click)="buscarPorId(searchInput.value)">Buscar</button>
+</div>
+
+<div class="text-end mb-4">
+  <button class="btn btn-success" routerLink="newProducto">Crear Producto</button>
+</div>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Existencia</th>
+      <th>Precio</th>
+      <th>Categoría</th>
+      <th>Fecha Creación</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (producto of productos; track producto.idProducto) {
+      <tr>
+        <td>{{producto.idProducto}}</td>
+        <td>{{producto.nombreProducto}}</td>
+        <td>{{producto.descripcionProducto}}</td>
+        <td>{{producto.existenciaProducto}}</td>
+        <td>{{producto.precioProducto}}</td>
+        <td>{{producto.idCategoria}}</td>
+        <td>{{producto.fechaCreacion | date:'dd/MM/yyyy hh:mm a'}}</td>
+        <td class="text-end">
+        <div class="btn-group">
+          <button class="btn btn-info" [routerLink]="[producto.idProducto, 'editProducto'] ">Editar</button>
+          <button class="btn btn-danger" (click)="deleteProductos(producto)">Eliminar</button>
+        </div>
+      </td>
+    </tr>
+  }
+  </tbody>
+</table>

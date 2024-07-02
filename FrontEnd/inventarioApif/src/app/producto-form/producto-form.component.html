@@ -1,0 +1,60 @@
+<h2 class="mb-5">
+  @if (producto) {
+    Editar
+  }@else {
+    Nuevo
+  } producto
+</h2>
+
+<div class="row row-cols-2 justify-content-center">
+  @if (form) {
+    <form [formGroup]="form" (submit)="save()">
+
+      <div class="mb-3">
+        <label for="name">Nombre</label>
+        <input id="nameProducto" type="text" placeholder="Nombre" class="form-control"
+          formControlName="nombreProducto">
+      </div>
+
+      <div class="mb-3">
+        <label for="desc">Descripcion</label>
+        <input id="descProducto" type="text" placeholder="Descripcion" class="form-control"
+          formControlName="descripcionProducto">
+      </div>
+
+      <div class="mb-3">
+        <label for="exist">Existencias</label>
+        <input id="existProducto" type="number" placeholder="Existencias" class="form-control"
+          formControlName="existenciaProducto">
+      </div>
+
+      <div class="mb-3">
+        <label for="precio">Precio</label>
+        <input id="precioProducto" type="number" placeholder="Precio" class="form-control"
+          formControlName="precioProducto">
+      </div>
+
+      <div class="mb-3">
+        <label for="categoria">idCategoria</label>
+        <input id="idCategoria" type="number" placeholder="idCategoria" class="form-control"
+          formControlName="idCategoria">
+      </div>
+
+      <div class="text-end">
+
+        <button type="button" class="btn btn-light" routerLink="/">
+          Cancelar
+        </button>
+
+        <button class="btn btn-primary ms-2">
+          @if (producto) {
+            Actualizar
+          }@else {
+            Crear
+          } producto
+        </button>
+      </div>
+
+    </form>
+  }
+</div>

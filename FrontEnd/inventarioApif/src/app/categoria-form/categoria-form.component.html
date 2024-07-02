@@ -1,0 +1,42 @@
+<h2 class="mb-5">
+  @if (categoria) {
+    Editar
+  }@else {
+    Nueva
+  } categoria
+</h2>
+
+<div class="row row-cols-2 justify-content-center">
+  @if (form) {
+    <form [formGroup]="form" (submit)="save()">
+
+      <div class="mb-3">
+        <label for="name">Nombre</label>
+        <input id="nameCategoria" type="text" placeholder="Nombre" class="form-control"
+          formControlName="nombreCategoria">
+      </div>
+
+      <div class="mb-3">
+        <label for="desc">Descripcion</label>
+        <input id="descCategoria" type="text" placeholder="Descripcion" class="form-control"
+          formControlName="descripcionCategoria">
+      </div>
+
+      <div class="text-end">
+
+        <button type="button" class="btn btn-light" routerLink="/">
+          Cancelar
+        </button>
+
+        <button class="btn btn-primary ms-2">
+          @if (categoria) {
+            Actualizar
+          }@else {
+            Crear
+          } categoria
+        </button>
+      </div>
+
+    </form>
+  }
+</div>
